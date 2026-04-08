@@ -11,6 +11,7 @@
 */
 
 using IdentityServer10.Models;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace IdentityServer10.EntityFramework.Mappers
 {
@@ -21,7 +22,9 @@ namespace IdentityServer10.EntityFramework.Mappers
     {
         static PersistedGrantMappers()
         {
-            Mapper = new MapperConfiguration(cfg =>cfg.AddProfile<PersistedGrantMapperProfile>())
+            Mapper = new MapperConfiguration(
+                    cfg => cfg.AddProfile<PersistedGrantMapperProfile>(),
+                    NullLoggerFactory.Instance)
                 .CreateMapper();
         }
 

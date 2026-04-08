@@ -11,6 +11,7 @@
 */
 
 using IdentityServer10.EntityFramework.Entities;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace IdentityServer10.EntityFramework.Mappers
 {
@@ -21,7 +22,9 @@ namespace IdentityServer10.EntityFramework.Mappers
     {
         static IdentityResourceMappers()
         {
-            Mapper = new MapperConfiguration(cfg => cfg.AddProfile<IdentityResourceMapperProfile>())
+            Mapper = new MapperConfiguration(
+                    cfg => cfg.AddProfile<IdentityResourceMapperProfile>(),
+                    NullLoggerFactory.Instance)
                 .CreateMapper();
         }
 
