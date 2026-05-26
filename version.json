@@ -35,10 +35,11 @@
     "!nuget"
   ],
   "publicReleaseRefSpec": [
-    "^refs/heads/master$", // we release out of master
-    "^refs/tags/v\\d+\\.\\d+", // we also release tags starting with vN.N
-    "^refs/heads/develop$", // we release alpha out of develop
-    "^refs/heads/release/*" // we release beta out of release
+    "^refs/heads/master$",
+    "^refs/tags/\\d+\\.\\d+\\.\\d+$",
+    "^refs/tags/v\\d+\\.\\d+\\.\\d+$",
+    "^refs/heads/develop$",
+    "^refs/heads/release/.*"
   ],
   "cloudBuild": {
     "setVersionVariables": true,
@@ -51,9 +52,9 @@
     }
   },
   "release": {
-    "tagName": "v{version}",
-    "branchName": "v{version}",
-    "versionIncrement": "minor",
+    "tagName": "{version}",
+    "branchName": "release/{version}",
+    "versionIncrement": "patch",
     "firstUnstableTag": "alpha"
   }
 }
