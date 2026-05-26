@@ -3,7 +3,30 @@ All notable changes to this project will be documented in this file.
  
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning 2](http://semver.org/).
- 
+
+## [Unreleased]
+
+## [10.0.2] - 2026-05-26
+
+### Changed
+
+- Upgraded **AutoMapper** from `13.0.1` to `16.1.1` in central package management (`Directory.Packages.props`).
+- Updated Entity Framework storage mappers (`ApiResource`, `Client`, `IdentityResource`, `PersistedGrant`, `Scope`) to build `MapperConfiguration` with the AutoMapper 16 constructor that accepts an `ILoggerFactory` (`NullLoggerFactory.Instance`).
+
+### Contributors
+
+- AutoMapper upgrade and mapper adjustments merged from [PR #1](https://github.com/omarbaruzzo/IdentityServer10/pull/1) ([@kamilkloch](https://github.com/kamilkloch)).
+
+## [10.0.1] - 2026-02-15
+
+### Changed
+
+- Bumped package and build metadata from `10.0.0` to `10.0.1` (`Directory.Build.props`, `version.json`, `samples/Directory.Build.props`, README stable version).
+- Aligned **Entity Framework Core** packages with a dedicated `EfVersion` property in `Directory.Packages.props` (instead of mixing ASP.NET Core version variables), keeping provider versions consistent across Design, InMemory, Relational, Sqlite, SqlServer, and Tools.
+- Raised **EF Core** to **10.0.2** together with aligned ASP.NET Core / Extensions package versions (`10.0.2`) for the .NET 10 line.
+- Upgraded **Pomelo.EntityFrameworkCore.MySql** from `8.0.2` to **9.0.0** for MySQL/MariaDB persistence compatible with EF Core 10.
+- Documented Pomelo **9.0.0** usage for MySQL/MariaDB in the root `README.md`.
+
 ## [10.0.0] - 2026-02-10
 
 ### Summary
