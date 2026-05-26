@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-	<IdentityServerVersion>10.0.1</IdentityServerVersion>
+	<IdentityServerVersion>10.0.2</IdentityServerVersion>
   </PropertyGroup>
   <ImportGroup>
 	 <Import Project="../Directory.Build.props" />
