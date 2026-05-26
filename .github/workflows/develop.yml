@@ -62,6 +62,6 @@ jobs:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Push
-      if: ${{ (github.event_name == 'push') && (runner.os == 'Windows') }} 
-      run: dotnet nuget push .\nuget\*.nupkg  --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (runner.os == 'Windows') }}
+      run: dotnet nuget push .\nuget\*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
