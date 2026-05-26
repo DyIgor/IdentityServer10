@@ -4,26 +4,36 @@
 name: Release
 
 on:
-  workflow_dispatch:
   push:
     branches:
     - release/*
-    tags:
-    - 'v*'
     paths-ignore:
     - '**/README.md'
-    - 'docs/**'
-    - '.git/**'
-    - '.vs/**'
-    - '.config/**'
-    - 'docker-compose.yml'
-    - 'docker-compose.override.yml'
-    - 'docker-compose.vs.debug.yml'
-    - 'docker-compose.vs.release.yml'
-    - 'docker-compose.dcrpoj'
-    - 'Nuget.config'
-    - 'SECURITY.md'
-    - 'SPONSORS.md'
+    - '**/docs'
+    - '.github/**'
+    - "docs/**"
+    - ".git/*"
+    - ".vs/*"
+    - ".config/*"
+    - ".github/*"
+    - "Directory.Build.props"
+    - "Directory.Build.targets"
+    - "Directory.Build.props"
+    - "docker-compose.yml"
+    - "docker-compose.override.yml"
+    - "docker-compose.vs.debug.yml"
+    - "docker-compose.vs.release.yml"
+    - "docker-compose.dcrpoj"
+    - "**/*.sln"
+    - "global.json"
+    - "IdentityServer8.DotNet.ruleset"
+    - "LICENSCE"
+    - "Nuget.config"
+    - "SECURITY.md"
+    - "SPONSORS.md"
+    - "README.md"
+    - "samples"
+    - "nuget"
 
 jobs:
   build:
@@ -67,6 +77,6 @@ jobs:
 
 
     - name: Push
-      if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (runner.os == 'Windows') }}
-      run: dotnet nuget push .\nuget\*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      if: ${{ (github.event_name == 'push') && (runner.os == 'Windows') }} 
+      run: dotnet nuget push .\nuget\*.nupkg  --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
